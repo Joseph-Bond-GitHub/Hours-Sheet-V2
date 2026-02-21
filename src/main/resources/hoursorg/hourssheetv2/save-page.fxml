@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="485.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="6.0" layoutY="75.0" prefHeight="40.0" prefWidth="185.0" text="Hours">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="hoursfld" layoutX="5.0" layoutY="116.0" prefHeight="40.0" prefWidth="275.0">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </TextField>
+      <Label layoutX="6.0" layoutY="162.0" prefHeight="34.0" prefWidth="185.0" text="Description">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="descriptionarea" layoutX="5.0" layoutY="195.0" prefHeight="100.0" prefWidth="275.0">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </TextArea>
+      <ChoiceBox fx:id="filechc" layoutX="321.0" layoutY="115.0" prefHeight="42.0" prefWidth="209.0" />
+      <Button fx:id="savebtn" layoutX="6.0" layoutY="315.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="73.0" text="Save">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="toLoadScreenbtn" layoutX="142.0" layoutY="315.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="137.0" text="Load hours sheet">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Label layoutX="323.0" layoutY="189.0" prefHeight="31.0" prefWidth="214.0" text="Label" textFill="#ff0606">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" height="60.0" smooth="false" stroke="BLACK" strokeType="INSIDE" width="600.0">
+         <fill>
+            <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="0.7102137767220902" startX="0.503562945368171" startY="0.7078384798099763">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.26120856404304504" green="0.3025665879249573" blue="0.8815789222717285" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11372549086809158" green="0.2862745225429535" blue="0.4901960790157318" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" height="75.0" layoutY="410.0" stroke="BLACK" strokeType="INSIDE" width="600.0">
+         <fill>
+            <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="0.7102137767220902" startX="0.503562945368171" startY="0.7078384798099763">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.26120856404304504" green="0.3025665879249573" blue="0.8815789222717285" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11372549086809158" green="0.2862745225429535" blue="0.4901960790157318" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <ImageView fitHeight="50.0" fitWidth="300.0" layoutX="170.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@IMG_4195.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>
