@@ -14,7 +14,7 @@ public class HoursSheetApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         stage.setTitle("Hours Sheet");
         stage.setWidth(600);
-        stage.setHeight(485);
+        stage.setHeight(500);//485
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
