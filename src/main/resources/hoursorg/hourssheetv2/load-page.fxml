@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="485.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hoursorg.hourssheetv2.LoadPageController">
+   <children>
+      <Label fx:id="popuplbl" layoutX="340.0" layoutY="189.0" prefHeight="100.0" prefWidth="210.0" textFill="#ff0606" visible="false">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" height="60.0" smooth="false" stroke="BLACK" strokeType="INSIDE" width="900.0">
+         <fill>
+            <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="0.7102137767220902" startX="0.503562945368171" startY="0.7078384798099763">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.26120856404304504" green="0.3025665879249573" blue="0.8815789222717285" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11372549086809158" green="0.2862745225429535" blue="0.4901960790157318" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" height="75.0" layoutY="410.0" stroke="BLACK" strokeType="INSIDE" width="900.0">
+         <fill>
+            <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="0.7102137767220902" startX="0.503562945368171" startY="0.7078384798099763">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.26120856404304504" green="0.3025665879249573" blue="0.8815789222717285" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11372549086809158" green="0.2862745225429535" blue="0.4901960790157318" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <ImageView fitHeight="50.0" fitWidth="300.0" layoutX="310.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@IMG_4195.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="monthlbl" layoutY="60.0" prefHeight="31.0" prefWidth="128.0" text="Month">
+         <font>
+            <Font size="30.0" />
+         </font></Label>
+      <GridPane layoutX="-1.0" layoutY="97.0" prefHeight="160.0" prefWidth="900.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="223.0" minWidth="10.0" prefWidth="223.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="223.0" minWidth="10.0" prefWidth="223.0" />
+            <ColumnConstraints fx:id="datagridPane" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="101.0" minHeight="0.0" prefHeight="35.0" vgrow="NEVER" />
+          <RowConstraints maxHeight="281.0" minHeight="10.0" prefHeight="276.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+      </GridPane>
+   </children>
+</Pane>
