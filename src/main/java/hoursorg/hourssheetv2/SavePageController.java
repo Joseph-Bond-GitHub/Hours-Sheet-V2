@@ -122,6 +122,8 @@ public class SavePageController {
     }
 
     private String fieldsToTextLine(){
+        //If there are multiple lines in description field remove these and replace with character. Then when reading do
+        //the inverse??
         String textLine;
         LocalDate date = LocalDate.now();
         textLine = date.toString();
