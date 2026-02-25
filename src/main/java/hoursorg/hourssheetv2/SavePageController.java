@@ -78,7 +78,9 @@ public class SavePageController {
         try {
             Path dataDirectoryPath = Paths.get("src/main/Data");
             for (Path filePath : Files.newDirectoryStream(dataDirectoryPath)){
-                list.add(filePath.getFileName().toString());
+                if(!filePath.getFileName().toString().equals(getCurrentMonthFile())){
+                    list.add(filePath.getFileName().toString());
+                }
             }
         }catch(Exception e){
             popuplbl.setText("ERROR: cannot get files in directory");
@@ -146,10 +148,9 @@ public class SavePageController {
         }
     }
     @FXML
-    protected void ontoLoadScreenbtnClick(){
-        switchScene();
+    protected void ontoLoadScreenbtnClick() throws Exception {
+        switchScene("load-page.fxml");
     }
-
     private void switchScene(String fxmlFile) throws Exception {
         Parent newRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlFile)));
         Stage window = (Stage) toLoadScreenbtn.getScene().getWindow();  // Get current stage
