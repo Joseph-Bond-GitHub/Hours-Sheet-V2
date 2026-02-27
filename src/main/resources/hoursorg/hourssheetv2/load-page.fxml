@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -77,5 +78,6 @@
           <RowConstraints maxHeight="281.0" minHeight="10.0" prefHeight="276.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
+      <ChoiceBox fx:id="filechc" layoutX="690.0" layoutY="60.0" prefHeight="42.0" prefWidth="209.0" />
    </children>
 </Pane>
