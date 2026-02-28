@@ -10,27 +10,21 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
-import static java.nio.file.StandardOpenOption.APPEND;
-import static java.nio.file.StandardOpenOption.CREATE;
 
 public class SavePageController {
     @FXML
-    public TextField hoursfld;
-    public TextArea descriptionarea;
-    public ChoiceBox<String> filechc;
-    public Button savebtn;
-    public Button toLoadScreenbtn;
-    public Label popuplbl;
+    protected TextField hoursfld;
+    protected TextArea descriptionarea;
+    protected ChoiceBox<String> filechc;
+    protected Button savebtn;
+    protected Button toLoadScreenbtn;
+    protected Label popuplbl;
 
-    public PauseTransition removePopUplbl = new PauseTransition();
+    private final PauseTransition removePopUplbl = new PauseTransition();
+    private FileOperations fileOperation;
 
     @FXML
     public void initialize() {
@@ -43,7 +37,7 @@ public class SavePageController {
 
     @FXML
     protected void onsavebtnclick() {
-        String fileName = getFileName();
+        String fileName = getSelectedFileName();
         String content = "";
         content = fieldsToTextLine();
         if (descriptionarea.getText().isEmpty() || hoursfld.getText().isEmpty()){
@@ -51,7 +45,7 @@ public class SavePageController {
             popuplbl.setVisible(true);
             removePopUplbl.play();
         }else{
-            if (writeToFile(content, fileName)){
+            if (fileOperation.writeToFile(content, fileName)){
                 popuplbl.setText("Saving successful");
                 popuplbl.setVisible(true);
                 removePopUplbl.play();
@@ -63,62 +57,14 @@ public class SavePageController {
         }
     }
 
-    private String getFileName(){
-        if(filechc.getSelectionModel().getSelectedIndex() == 0){
-            return getCurrentMonthFile();
-        }
+    private String getSelectedFileName(){
         return filechc.getSelectionModel().getSelectedItem();
     }
 
-    private List<String> populatefilechc() {
-        List<String> list = new ArrayList<>();
-        //add the default value to the list as the first item
-        list.add(getCurrentMonthFile());
-        //get the names of items from the directory "Data"
-        try {
-            Path dataDirectoryPath = Paths.get("src/main/Data");
-            for (Path filePath : Files.newDirectoryStream(dataDirectoryPath)){
-                if(!filePath.getFileName().toString().equals(getCurrentMonthFile())){
-                    list.add(filePath.getFileName().toString());
-                }
-            }
-        }catch(Exception e){
-            popuplbl.setText("ERROR: cannot get files in directory");
-            popuplbl.setVisible(true);
-            removePopUplbl.play();
-        }
-
-        return list;
-    }
     private void initializefilechc() {
+        filechc.getItems().addAll(fileOperation.getFileNamesInDataDirectory());
         filechc.setStyle("-fx-font-size: 16");
-        filechc.getItems().addAll(populatefilechc());
         filechc.getSelectionModel().select(0);
-    }
-
-    private String getCurrentMonthFile(){
-        LocalDate date = LocalDate.now();
-        String monthFile = "";
-        monthFile = date.getYear() + "-";
-        int monthLength = Integer.toString(date.getMonthValue()).length();
-        monthFile = (monthLength == 1) ? monthFile + "0" + date.getMonthValue() : monthFile + date.getMonthValue();
-        monthFile += ".txt";
-        return monthFile;
-    }
-    private Boolean writeToFile(String content, String fileName){
-        Path dataDirectory = Paths.get("src/main/Data/" + fileName);
-        try{
-            OutputStream output = new BufferedOutputStream(Files.newOutputStream(dataDirectory, CREATE, APPEND));
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(output));
-            writer.write(content);
-            writer.newLine();
-            writer.flush();
-            writer.close();
-            //add more fine-grained exception handling
-        }catch(Exception e){
-            return false;
-        }
-        return true;
     }
 
     private String fieldsToTextLine(){
