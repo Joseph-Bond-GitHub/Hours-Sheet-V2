@@ -11,6 +11,8 @@ import javafx.util.Duration;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -28,16 +30,16 @@ public class SavePageController {
 
     @FXML
     public void initialize() {
+        this.fileOperation = new FileOperations();
         initializefilechc();
-        FileOperations fileOperations = new FileOperations();
         removePopUplbl.setDuration(Duration.seconds(3));
         removePopUplbl.setOnFinished(event1 -> {
             popuplbl.setVisible(false);
         });
     }
     private void initializefilechc() {
-        filechc.getItems().addAll(fileOperation.getFileNamesInDataDirectory());
         filechc.setStyle("-fx-font-size: 16");
+        filechc.getItems().addAll(fileOperation.getFileNamesInDataDirectory());
         filechc.getSelectionModel().select(0);
     }
 
