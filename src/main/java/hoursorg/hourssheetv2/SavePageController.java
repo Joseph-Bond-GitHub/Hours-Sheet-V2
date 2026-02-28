@@ -69,6 +69,51 @@ public class SavePageController {
         return filechc.getSelectionModel().getSelectedItem();
     }
 
+    private List<String> populatefilechc() {
+        List<String> list = new ArrayList<>();
+        //add the default value to the list as the first item
+        list.add(getCurrentMonthFile());
+        //get the names of items from the directory "Data"
+        try {
+            Path dataDirectoryPath = Paths.get("src/main/Data");
+            for (Path filePath : Files.newDirectoryStream(dataDirectoryPath)){
+                if(!filePath.getFileName().toString().equals(getCurrentMonthFile())){
+                    list.add(filePath.getFileName().toString());
+                }
+            }
+        }catch(Exception e){
+            popuplbl.setText("ERROR: cannot get files in directory");
+            popuplbl.setVisible(true);
+            removePopUplbl.play();
+        }
+
+        return list;
+    }
+
+    private String getCurrentMonthFile(){
+        LocalDate date = LocalDate.now();
+        String monthFile = "";
+        monthFile = date.getYear() + "-";
+        int monthLength = Integer.toString(date.getMonthValue()).length();
+        monthFile = (monthLength == 1) ? monthFile + "0" + date.getMonthValue() : monthFile + date.getMonthValue();
+        monthFile += ".txt";
+        return monthFile;
+    }
+    private Boolean writeToFile(String content, String fileName){
+        Path dataDirectory = Paths.get("src/main/Data/" + fileName);
+        try{
+            OutputStream output = new BufferedOutputStream(Files.newOutputStream(dataDirectory, CREATE, APPEND));
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(output));
+            writer.write(content);
+            writer.newLine();
+            writer.flush();
+            writer.close();
+            //add more fine-grained exception handling
+        }catch(Exception e){
+            return false;
+        }
+        return true;
+    }
 
     private String fieldsToTextLine(){
         //If there are multiple lines in description field remove these and replace with character. Then when reading do
