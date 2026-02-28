@@ -40,6 +40,11 @@ public class SavePageController {
             popuplbl.setVisible(false);
         });
     }
+    private void initializefilechc() {
+        filechc.setStyle("-fx-font-size: 16");
+        filechc.getItems().addAll(populatefilechc());
+        filechc.getSelectionModel().select(0);
+    }
 
     @FXML
     protected void onsavebtnclick() {
@@ -89,11 +94,6 @@ public class SavePageController {
         }
 
         return list;
-    }
-    private void initializefilechc() {
-        filechc.setStyle("-fx-font-size: 16");
-        filechc.getItems().addAll(populatefilechc());
-        filechc.getSelectionModel().select(0);
     }
 
     private String getCurrentMonthFile(){
