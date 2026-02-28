@@ -22,8 +22,6 @@ public class LoadPageController {
         //Add and populate fields of gridPane with the relevant data
     }
 
-    private String[] getFileData(){
 
-    }
 
 }
