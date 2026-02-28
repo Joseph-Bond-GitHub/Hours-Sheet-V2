@@ -20,7 +20,7 @@ public class SavePageController {
     @FXML
     protected TextField hoursfld;
     protected TextArea descriptionarea;
-    public ChoiceBox<String> filechc;
+    protected ChoiceBox<String> filechc;
     protected Button savebtn;
     protected Button toLoadScreenbtn;
     protected Label popuplbl;
