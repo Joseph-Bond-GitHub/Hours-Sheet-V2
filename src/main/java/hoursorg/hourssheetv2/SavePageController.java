@@ -10,30 +10,27 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static java.nio.file.StandardOpenOption.APPEND;
-import static java.nio.file.StandardOpenOption.CREATE;
 
 public class SavePageController {
     @FXML
-    public TextField hoursfld;
-    public TextArea descriptionarea;
+    protected TextField hoursfld;
+    protected TextArea descriptionarea;
     public ChoiceBox<String> filechc;
-    public Button savebtn;
-    public Button toLoadScreenbtn;
-    public Label popuplbl;
+    protected Button savebtn;
+    protected Button toLoadScreenbtn;
+    protected Label popuplbl;
 
-    public PauseTransition removePopUplbl = new PauseTransition();
+    private final PauseTransition removePopUplbl = new PauseTransition();
+    private FileOperations fileOperation;
 
     @FXML
     public void initialize() {
+        this.fileOperation = new FileOperations();
         initializefilechc();
         removePopUplbl.setDuration(Duration.seconds(3));
         removePopUplbl.setOnFinished(event1 -> {
@@ -42,13 +39,13 @@ public class SavePageController {
     }
     private void initializefilechc() {
         filechc.setStyle("-fx-font-size: 16");
-        filechc.getItems().addAll(populatefilechc());
+        filechc.getItems().addAll(fileOperation.getFileNamesInDataDirectory());
         filechc.getSelectionModel().select(0);
     }
 
     @FXML
     protected void onsavebtnclick() {
-        String fileName = getFileName();
+        String fileName = getSelectedFileName();
         String content = "";
         content = fieldsToTextLine();
         if (descriptionarea.getText().isEmpty() || hoursfld.getText().isEmpty()){
@@ -56,7 +53,7 @@ public class SavePageController {
             popuplbl.setVisible(true);
             removePopUplbl.play();
         }else{
-            if (writeToFile(content, fileName)){
+            if (fileOperation.writeToFile(content, fileName)){
                 popuplbl.setText("Saving successful");
                 popuplbl.setVisible(true);
                 removePopUplbl.play();
@@ -68,10 +65,7 @@ public class SavePageController {
         }
     }
 
-    private String getFileName(){
-        if(filechc.getSelectionModel().getSelectedIndex() == 0){
-            return getCurrentMonthFile();
-        }
+    private String getSelectedFileName(){
         return filechc.getSelectionModel().getSelectedItem();
     }
 
