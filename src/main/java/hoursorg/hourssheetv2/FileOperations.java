@@ -17,6 +17,7 @@ import static java.nio.file.StandardOpenOption.CREATE;
 public class FileOperations {//Class for all on-file operations and related methods. To be instanciated in initialise method of cotnrollers
     private String filename;
 
+    public void FileOperations(){this.filename = getCurrentMonthFile();}
     public void setFilename(String filename){this.filename = filename;}
     public String getFilename(){return this.filename;}
 
@@ -49,7 +50,6 @@ public class FileOperations {//Class for all on-file operations and related meth
 
     public List<String> getFileNamesInDataDirectory() {
         List<String> list = new ArrayList<>();
-        String resultMessage = "";
         //add the default value to the list as the first item
         list.add(getCurrentMonthFile());
         //get the names of items from the directory "Data"

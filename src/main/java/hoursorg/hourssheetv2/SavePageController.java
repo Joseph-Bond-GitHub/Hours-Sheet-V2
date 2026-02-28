@@ -18,7 +18,7 @@ public class SavePageController {
     @FXML
     protected TextField hoursfld;
     protected TextArea descriptionarea;
-    protected ChoiceBox<String> filechc;
+    public ChoiceBox<String> filechc;
     protected Button savebtn;
     protected Button toLoadScreenbtn;
     protected Label popuplbl;
@@ -29,10 +29,16 @@ public class SavePageController {
     @FXML
     public void initialize() {
         initializefilechc();
+        FileOperations fileOperations = new FileOperations();
         removePopUplbl.setDuration(Duration.seconds(3));
         removePopUplbl.setOnFinished(event1 -> {
             popuplbl.setVisible(false);
         });
+    }
+    private void initializefilechc() {
+        filechc.getItems().addAll(fileOperation.getFileNamesInDataDirectory());
+        filechc.setStyle("-fx-font-size: 16");
+        filechc.getSelectionModel().select(0);
     }
 
     @FXML
@@ -61,11 +67,6 @@ public class SavePageController {
         return filechc.getSelectionModel().getSelectedItem();
     }
 
-    private void initializefilechc() {
-        filechc.getItems().addAll(fileOperation.getFileNamesInDataDirectory());
-        filechc.setStyle("-fx-font-size: 16");
-        filechc.getSelectionModel().select(0);
-    }
 
     private String fieldsToTextLine(){
         //If there are multiple lines in description field remove these and replace with character. Then when reading do
