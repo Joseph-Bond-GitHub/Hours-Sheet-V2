@@ -23,13 +23,12 @@ import static java.nio.file.StandardOpenOption.CREATE;
 
 
 public class SavePageController {
-    @FXML
-    protected TextField hoursfld;
-    protected TextArea descriptionarea;
-    protected ChoiceBox<String> filechc;
-    protected Button savebtn;
-    protected Button toLoadScreenbtn;
-    protected Label popuplbl;
+    @FXML protected TextField hoursfld;
+    @FXML protected TextArea descriptionarea;
+    @FXML protected ChoiceBox<String> filechc = new ChoiceBox<>();
+    @FXML protected Button savebtn;
+    @FXML protected Button toLoadScreenbtn;
+    @FXML protected Label popuplbl;
 
     private final PauseTransition removePopUplbl = new PauseTransition();
     private FileOperations fileOperation;
