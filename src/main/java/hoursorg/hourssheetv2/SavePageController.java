@@ -25,7 +25,7 @@ import static java.nio.file.StandardOpenOption.CREATE;
 public class SavePageController {
     @FXML protected TextField hoursfld;
     @FXML protected TextArea descriptionarea;
-    @FXML protected ChoiceBox<String> filechc = new ChoiceBox<>();
+    @FXML protected ComboBox<String> filecmb;
     @FXML protected Button savebtn;
     @FXML protected Button toLoadScreenbtn;
     @FXML protected Label popuplbl;
@@ -43,9 +43,9 @@ public class SavePageController {
         });
     }
     private void initializefilechc() {
-        filechc.setStyle("-fx-font-size: 16");
-        filechc.getItems().addAll(fileOperation.getFileNamesInDataDirectory());
-        filechc.getSelectionModel().select(0);
+        filecmb.setStyle("-fx-font-size: 16");
+        filecmb.getItems().addAll(fileOperation.getFileNamesInDataDirectory());
+        filecmb.getSelectionModel().select(0);
     }
 
     @FXML
@@ -71,7 +71,7 @@ public class SavePageController {
     }
 
     private String getSelectedFileName(){
-        return filechc.getSelectionModel().getSelectedItem();
+        return filecmb.getSelectionModel().getSelectedItem();
     }
 
     private List<String> populatefilechc() {
