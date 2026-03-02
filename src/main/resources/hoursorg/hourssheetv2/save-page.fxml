@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -17,36 +17,22 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="485.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hoursorg.hourssheetv2.SavePageController">
    <children>
-      <Label layoutX="15.0" layoutY="75.0" prefHeight="40.0" prefWidth="185.0" text="Hours">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <TextField fx:id="hoursfld" layoutX="15.0" layoutY="116.0" prefHeight="40.0" prefWidth="275.0">
+      <TextField fx:id="hoursfld" layoutX="15.0" layoutY="75.0" prefHeight="40.0" prefWidth="275.0" promptText="Hours">
          <font>
             <Font size="12.0" />
          </font>
       </TextField>
-      <Label layoutX="15.0" layoutY="162.0" prefHeight="34.0" prefWidth="185.0" text="Description">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <TextArea fx:id="descriptionarea" layoutX="15.0" layoutY="192.0" prefHeight="100.0" prefWidth="275.0" wrapText="true">
+      <TextArea fx:id="descriptionarea" layoutX="15.0" layoutY="136.0" prefHeight="257.0" prefWidth="273.0" promptText="Description" wrapText="true">
          <font>
             <Font size="12.0" />
          </font>
       </TextArea>
-      <ChoiceBox fx:id="filechc" layoutX="340.0" layoutY="115.0" prefHeight="42.0" prefWidth="209.0">
-         <rotationAxis>
-            <Point3D />
-         </rotationAxis></ChoiceBox>
-      <Button fx:id="savebtn" layoutX="15.0" layoutY="315.0" onAction="#onsavebtnclick" prefHeight="34.0" prefWidth="73.0" text="Save">
+      <Button fx:id="savebtn" layoutX="322.0" layoutY="205.0" onAction="#onsavebtnclick" prefHeight="34.0" prefWidth="73.0" text="Save">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button fx:id="toLoadScreenbtn" layoutX="153.0" layoutY="315.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="137.0" text="Load hours sheet" onAction="#ontoLoadScreenbtnClick">
+      <Button fx:id="toLoadScreenbtn" layoutX="409.0" layoutY="205.0" mnemonicParsing="false" onAction="#ontoLoadScreenbtnClick" prefHeight="34.0" prefWidth="137.0" text="Load hours sheet">
          <font>
             <Font size="16.0" />
          </font>
@@ -97,5 +83,7 @@
             <Image url="@IMG_4195.png" />
          </image>
       </ImageView>
+      <ChoiceBox fx:id="Category" layoutX="322.0" layoutY="74.0" prefHeight="42.0" prefWidth="224.0" />
+      <ComboBox fx:id="filecmb" layoutX="322.0" layoutY="247.0" prefHeight="42.0" prefWidth="224.0" visibleRowCount="5" />
    </children>
 </Pane>
