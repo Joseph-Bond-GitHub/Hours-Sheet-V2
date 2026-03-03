@@ -1,9 +1,7 @@
 package hoursorg.hourssheetv2;
 
-import java.io.BufferedOutputStream;
-import java.io.BufferedWriter;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
+import java.io.*;
+import java.nio.Buffer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -62,6 +60,23 @@ public class FileOperations {//Class for all on-file operations and related meth
             }
         }catch (Exception e){
             list.set(0,"");
+        }
+        return list;
+    }
+    public List<String> getTags() {
+        List<String> list = new ArrayList<>();
+        String line;
+        //add the default value to the list as the first item
+        list.add(getCurrentMonthFile());
+        try {
+            //Path dataDirectoryPath = Paths.get("src/main/Utility/Tags.txt");
+            BufferedReader br = new BufferedReader(new FileReader("src/main/Utility/Tags.txt"));
+            while((line = br.readLine()) != null){
+                list.add(line.strip());
+            }
+            br.close();
+        }catch (Exception e){
+            System.out.println("ERROR = " + e);
         }
         return list;
     }
