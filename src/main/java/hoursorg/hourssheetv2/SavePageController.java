@@ -29,6 +29,7 @@ public class SavePageController {
     @FXML protected Button savebtn;
     @FXML protected Button toLoadScreenbtn;
     @FXML protected Label popuplbl;
+    @FXML protected ListView<String> tagslsv;
 
     private final PauseTransition removePopUplbl = new PauseTransition();
     private FileOperations fileOperation;
@@ -37,6 +38,7 @@ public class SavePageController {
     public void initialize() {
         this.fileOperation = new FileOperations();
         initializefilechc();
+        populateCategories();
         removePopUplbl.setDuration(Duration.seconds(3));
         removePopUplbl.setOnFinished(event1 -> {
             popuplbl.setVisible(false);
@@ -46,6 +48,11 @@ public class SavePageController {
         filecmb.setStyle("-fx-font-size: 16");
         filecmb.getItems().addAll(fileOperation.getFileNamesInDataDirectory());
         filecmb.getSelectionModel().select(0);
+    }
+    private void populateCategories() {
+        tagslsv.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        List<String> tags = fileOperation.getTags();
+        tagslsv.getItems().addAll(tags);
     }
 
     @FXML
